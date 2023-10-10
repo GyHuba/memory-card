@@ -1,27 +1,39 @@
 import { useEffect, useState } from "react";
 import CardComponent from "./CardComponent";
-import { getRandomNumber } from "../services/services";
 
 export default function ContentComponent() {
   const [characterData, setCharacterData] = useState(null);
+  const [score, setScore] = useState(0);
+  const [page, setPage] = useState(1);
+
+  function incrementPage() {
+    setPage((page) => page + 1);
+  }
 
   useEffect(() => {
-    console.log(getRandomNumber(8, 80));
-    fetch(`https://rickandmortyapi.com/api/character`)
+    fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data.results);
         setCharacterData(data.results);
       });
-  }, []);
+  }, [page]);
 
   return (
     <>
       <h1>CONTENT</h1>
-      {characterData && <CardComponent cards={characterData} />}
-      {characterData && <div>{characterData[0].name}</div>}
+      <div>
+        Score:{score}.... Page:{page}
+      </div>
+      {characterData && (
+        <CardComponent
+          cards={characterData}
+          score={score}
+          setScore={setScore}
+          incrementPage={incrementPage}
+        />
+      )}
     </>
   );
 }
