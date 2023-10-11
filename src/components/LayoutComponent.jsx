@@ -1,7 +1,6 @@
 import ContentComponent from "./ContentComponent";
 import FooterComponent from "./FooterComponent";
-import HeaderComponent from "./HeaderComponent";
-
+import "../css/global.css"
 
 
 export default function LayoutComponent(){
@@ -9,9 +8,10 @@ export default function LayoutComponent(){
 
     return(
         <>
-        <HeaderComponent />
+        <div className="game-screen">
         <ContentComponent />
         <FooterComponent />
+        </div>
         </>
     )
 }
