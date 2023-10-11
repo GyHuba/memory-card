@@ -30,8 +30,12 @@ export function checkScore(score, callbackFn, setCardQuantity) {
     callbackFn();
     setCardQuantity(16);
   } else if (score === 69) {
-    alert("You win!");
+    callbackFn();
+    setCardQuantity(18);
+  }else if (score === 85) {
+  alert("You win!");
   }
+  
 }
 
 export function checkCards(e, usedCards, setUsedCards, score, setScore, bestScore, setBestScore) {
