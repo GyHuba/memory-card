@@ -1,9 +1,12 @@
-
-export default function FooterComponent(){
-
-    return(
-        <>
-        <h1>FOOTER </h1>
-        </>
-    )
+export default function FooterComponent() {
+  return (
+    <>
+      <div className="footer">
+        <a href="https://github.com/GyHuba" target="blank">
+          <i className="devicon-github-original"></i> 
+           GyHuba
+        </a>
+      </div>
+    </>
+  );
 }
