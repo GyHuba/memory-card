@@ -24,8 +24,14 @@ export default function ContentComponent() {
   return (
     <>
       <div className="game-board">
+        <div className="title">Rick and Memorty</div>
         <div className="scores">
-          Score:{score}.... Best Score:{bestScore}
+          <div className="score">
+            Score:{score}
+          </div>
+          <div className="best-score">
+            Best Score:{bestScore}
+          </div>              
         </div>
         {characterData && (
           <CardComponent
