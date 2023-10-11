@@ -4,6 +4,7 @@ import CardComponent from "./CardComponent";
 export default function ContentComponent() {
   const [characterData, setCharacterData] = useState(null);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [page, setPage] = useState(1);
 
   function incrementPage() {
@@ -22,18 +23,22 @@ export default function ContentComponent() {
 
   return (
     <>
-      <h1>CONTENT</h1>
-      <div>
-        Score:{score}.... Page:{page}
+      <div className="game-board">
+        <div className="scores">
+          Score:{score}.... Best Score:{bestScore}
+        </div>
+        {characterData && (
+          <CardComponent
+            cards={characterData}
+            score={score}
+            setScore={setScore}
+            bestScore={bestScore}
+            setBestScore={setBestScore}
+            incrementPage={incrementPage}
+          />
+        )}
       </div>
-      {characterData && (
-        <CardComponent
-          cards={characterData}
-          score={score}
-          setScore={setScore}
-          incrementPage={incrementPage}
-        />
-      )}
+
     </>
   );
 }
