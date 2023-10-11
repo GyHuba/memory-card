@@ -34,16 +34,17 @@ export function checkScore(score, callbackFn, setCardQuantity) {
   }
 }
 
-export function checkCards(e, usedCards, setUsedCards, setScore) {
+export function checkCards(e, usedCards, setUsedCards, score, setScore, bestScore, setBestScore) {
   if (!usedCards.includes(e.target.id)) {
     setUsedCards((card) => [...card, e.target.id]);
     setScore((x) => x + 1);
+    if(score >= bestScore) setBestScore(score+1);
   } else {
     alert("You lose");
   }
 }
 
-export const randomize = (array) => {
+export const randomize = (array,setCardArray) => {
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -52,5 +53,5 @@ export const randomize = (array) => {
     return array;
   }
   const shuffledCards = shuffleArray(array);
-  return shuffledCards;
+  setCardArray(shuffledCards);
 };
