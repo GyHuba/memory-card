@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "../css/cards.css";
+import Tilt from 'react-parallax-tilt';
 import {
   checkCards,
   checkScore,
@@ -19,7 +20,7 @@ export default function CardComponent({
   const [usedCards, setUsedCards] = useState([]);
   const [cardQuantity, setCardQuantity] = useState(4);
   const [cardArray, setCardArray] = useState(getRandomNumber(cardQuantity));
-  const [gameCards, setGameCards] = useState([]);
+  const [gameCards, setGameCards] = useState(null);
 
   useEffect(() => {
     setCardArray(getRandomNumber(cardQuantity));
@@ -37,35 +38,40 @@ export default function CardComponent({
     <>
       <div className="card-container">
         {gameCards?.map((card) => (
-          <div
-            id={card?.id}
-            key={card?.id}
-            className="card"
-            style={{ backgroundImage: `url(${card?.image})` }}
-            onClick={(e) => {
-              checkCards(
-                e,
-                usedCards,
-                setUsedCards,
-                score,
-                setScore,
-                bestScore,
-                setBestScore
-              );
-              checkScore(score, incrementPage, setCardQuantity, setCardArray);
-              randomize(gameCards, setGameCards);
-              console.log(
-                "cardArray:",
-                cardArray,
-                "CardQuantity",
-                cardQuantity,
-                "cardID:",
-                e.target.id
-              );
-            }}
-          >
-            <span className="card-name">{card?.name}</span>
-          </div>
+          <Tilt key={card.id}
+          glareEnable={true}
+                    glareMaxOpacity={0.6}
+                    glareColor="#ffffff"
+                    glarePosition="bottom"
+                    glareBorderRadius="20px">
+              <div
+                id={card?.id}
+                key={card?.id}
+                className="card"
+                style={{ backgroundImage: `url(${card?.image})` }}
+                onClick={(e) => {
+                  checkCards(
+                    e,
+                    usedCards,
+                    setUsedCards,
+                    score,
+                    setScore,
+                    bestScore,
+                    setBestScore
+                  );
+                  checkScore(
+                    score,
+                    incrementPage,
+                    setCardQuantity,
+                    setCardArray
+                  );
+                  randomize(gameCards, setGameCards);
+                  console.log(e.target)
+                }}
+              >
+                <span className="card-name">{card?.name}</span>
+              </div>
+        </Tilt>
         ))}
       </div>
     </>
