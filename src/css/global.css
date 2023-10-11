@@ -1,0 +1,23 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-screen{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: url(../../public/wallpaperflare.com_wallpaper.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-board{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
