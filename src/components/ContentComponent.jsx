@@ -28,11 +28,13 @@ export default function ContentComponent() {
   return (
     <>
       {!isGammeStarted && (
+        <>
+        <div className="title">Rick and Memorty</div>
         <GameStartComponent setIsGameStarted={setIsGameStarted} />
+        </>
       )}
       {isGammeStarted && (
         <div className="game-board">
-          <div className="title">Rick and Memorty</div>
           <div className="scores">
             <div className="score">Score:{score}</div>
             <div className="best-score">Best Score:{bestScore}</div>
