@@ -3,8 +3,8 @@ export default function FooterComponent() {
     <>
       <div className="footer">
         <a href="https://github.com/GyHuba" target="blank">
-          <i className="devicon-github-original"></i> 
-           GyHuba
+          <i className="devicon-github-original"></i>
+          GyHuba
         </a>
       </div>
     </>
