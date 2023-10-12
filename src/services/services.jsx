@@ -10,7 +10,7 @@ export function getRandomNumber(times) {
   return numberArray;
 }
 
-export function checkScore(score, callbackFn, setCardQuantity) {
+export function checkScore(score, callbackFn, setCardQuantity, setIsGameOver) {
   if (score === 3) {
     callbackFn();
     setCardQuantity(6);
@@ -32,23 +32,31 @@ export function checkScore(score, callbackFn, setCardQuantity) {
   } else if (score === 69) {
     callbackFn();
     setCardQuantity(18);
-  }else if (score === 85) {
-  alert("You win!");
+  } else if (score === 87) {
+    setIsGameOver(true);
   }
-  
 }
 
-export function checkCards(e, usedCards, setUsedCards, score, setScore, bestScore, setBestScore) {
+export function checkCards(
+  e,
+  usedCards,
+  setUsedCards,
+  score,
+  setScore,
+  bestScore,
+  setBestScore,
+  setIsGameOver
+) {
   if (!usedCards.includes(e.target.id)) {
     setUsedCards((card) => [...card, e.target.id]);
     setScore((x) => x + 1);
-    if(score >= bestScore) setBestScore(score+1);
+    if (score >= bestScore) setBestScore(score + 1);
   } else {
-    alert("You lose");
+    setIsGameOver(true);
   }
 }
 
-export const randomize = (array,setCardArray) => {
+export const randomize = (array, setCardArray) => {
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -59,3 +67,7 @@ export const randomize = (array,setCardArray) => {
   const shuffledCards = shuffleArray(array);
   setCardArray(shuffledCards);
 };
+
+export function startGame(setIsGameStarted) {
+  setIsGameStarted(true);
+}
